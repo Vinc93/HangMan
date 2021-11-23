@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Game">
+
+    <ImageView
+        android:id="@+id/mainPic"
+        android:layout_width="264dp"
+        android:layout_height="236dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.078" />
+
+    <TextView
+        android:id="@+id/guessLeft"
+        android:layout_width="264dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="@+id/hiddenWord"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/hiddenWord"
+        app:layout_constraintTop_toBottomOf="@+id/hiddenWord" />
+
+    <TextView
+        android:id="@+id/hiddenWord"
+        android:layout_width="264dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/mainPic"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/mainPic"
+        app:layout_constraintTop_toBottomOf="@+id/mainPic" />
+
+    <TextView
+        android:id="@+id/wordsGuessed"
+        android:layout_width="264dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="36dp"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="@+id/guessLeft"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="@+id/guessLeft"
+        app:layout_constraintTop_toBottomOf="@+id/guessLeft" />
+
+    <EditText
+
+        android:id="@+id/guessWord"
+        android:layout_width="264dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
+        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        android:ems="10"
+        android:hint="Gissa på =)"
+        android:inputType="textPersonName"
+        android:maxLength="1"
+        app:layout_constraintEnd_toEndOf="@+id/wordsGuessed"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/wordsGuessed"
+        app:layout_constraintTop_toBottomOf="@+id/wordsGuessed" />
+
+    <TextView
+        android:id="@+id/guess"
+        android:layout_width="124dp"
+        android:layout_height="29dp"
+        android:gravity="center"
+        android:text="Gissa!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/guessWord"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="@+id/guessWord"
+        app:layout_constraintTop_toBottomOf="@+id/guessWord"
+        app:layout_constraintVertical_bias="0.156" />
+</androidx.constraintlayout.widget.ConstraintLayout>
