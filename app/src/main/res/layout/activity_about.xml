@@ -25,12 +25,11 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_marginTop="64dp"
-        app:layout_constraintEnd_toEndOf="@+id/info"
-        app:layout_constraintStart_toStartOf="@+id/info"
-        app:layout_constraintTop_toBottomOf="@+id/info"
-        app:srcCompat="@drawable/cat"
         android:rotation="180"
         android:rotationX="5"
         android:rotationY="7"
-        />
+        app:layout_constraintEnd_toEndOf="@+id/info"
+        app:layout_constraintStart_toStartOf="@+id/info"
+        app:layout_constraintTop_toBottomOf="@+id/info"
+        app:srcCompat="@drawable/cat" />
 </androidx.constraintlayout.widget.ConstraintLayout>

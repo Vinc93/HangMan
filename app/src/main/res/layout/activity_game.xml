@@ -23,6 +23,7 @@
         android:layout_height="39dp"
         android:layout_marginTop="16dp"
         android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="@+id/hiddenWord"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/hiddenWord"
@@ -45,11 +46,11 @@
         android:id="@+id/wordsGuessed"
         android:layout_width="264dp"
         android:layout_height="39dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="12dp"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="@+id/guessLeft"
-        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guessLeft"
         app:layout_constraintTop_toBottomOf="@+id/guessLeft" />
 
@@ -58,7 +59,7 @@
         android:id="@+id/guessWord"
         android:layout_width="264dp"
         android:layout_height="48dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="12dp"
         android:digits="abcdefghijklmnopqrstuvwxyzåäöABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ"
         android:ems="10"
         android:hint="Gissa på =)"
@@ -80,5 +81,5 @@
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="@+id/guessWord"
         app:layout_constraintTop_toBottomOf="@+id/guessWord"
-        app:layout_constraintVertical_bias="0.156" />
+        app:layout_constraintVertical_bias="0.063" />
 </androidx.constraintlayout.widget.ConstraintLayout>

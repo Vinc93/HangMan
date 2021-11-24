@@ -70,8 +70,6 @@ public class Game extends AppCompatActivity {
         list.add("Gymma");
 
 
-
-
         int randomInt = random.nextInt(list.size());
         ImageView img = (ImageView) findViewById(R.id.mainPic);
         EditText text = (EditText) findViewById(R.id.guessWord);
@@ -194,11 +192,11 @@ public class Game extends AppCompatActivity {
 
         for (int i = 0; i < wGuessed.size(); i++) {
 
-            if (emptyCheck(text) == true) {
-                count = count + "/" + wGuessed.get(i);
 
-                wordsTried.setText("Använda ord: " + count);
-            }
+            count = count + " - " + wGuessed.get(i);
+
+            wordsTried.setText("Använda ord: " + count);
+
         }
 
 
@@ -262,15 +260,14 @@ public class Game extends AppCompatActivity {
         } else return true;
     }
 
-    public boolean sizeTextCheck(EditText text){
+    public boolean sizeTextCheck(EditText text) {
 
-        if(text.getText().toString().length()>1){
+        if (text.getText().toString().length() > 1) {
             Toast.makeText(Game.this, "Inte mer än ett ord", Toast.LENGTH_SHORT).show();
             return false;
-        }else return true;
+        } else return true;
 
     }
-
 
 
     public void triesChange(ImageView img) {
@@ -342,61 +339,62 @@ public class Game extends AppCompatActivity {
     }
 
     public void GameCheck(EditText text, int randomInt, TextView wordsTried, TextView triesLeft, TextView word) {
-        if(sizeTextCheck(text)==true){
-        emptyCheck(text);
-        try {
-            if (checkWord(text) == false) {
-                System.out.println("error");
-            } else {
-                for (int i = 0; i < uWord.size(); i++) {
-                    System.out.println(uWord.get(i));
-                    char ez = list.get(randomInt).toString().toUpperCase().charAt(i);
-                    try {
-                        char pls = text.getText().toString().toUpperCase().charAt(0);
+        if (sizeTextCheck(text) == true) {
+            emptyCheck(text);
+            try {
+                if (checkWord(text) == false) {
+                    System.out.println("error");
+                } else {
+                    for (int i = 0; i < uWord.size(); i++) {
+                        System.out.println(uWord.get(i));
+                        char ez = list.get(randomInt).toString().toUpperCase().charAt(i);
+                        try {
+                            char pls = text.getText().toString().toUpperCase().charAt(0);
 
 
-                        if (pls == ez) {
-                            System.out.println("YESPLS");
+                            if (pls == ez) {
+                                System.out.println("YESPLS");
 
-                            uWord.set(i, text.getText().toString().toUpperCase());
-                            counter++;
-                            System.out.println(counter);
-                        } else if (pls != ez) {
-                            System.out.println("fail!");
+                                uWord.set(i, text.getText().toString().toUpperCase());
+                                counter++;
+                                System.out.println(counter);
+                            } else if (pls != ez) {
+                                System.out.println("fail!");
 
+                            }
+
+
+                        } catch (Exception e) {
+                            System.out.println("Dont leave me blanked!");
                         }
-
-
-                    } catch (Exception e) {
-                        System.out.println("Dont leave me blanked!");
                     }
-                }
 
-                if (counter == 0 && emptyCheck(text) == true) {
-                    tries--;
-                    triesLeft.setText(" Du har " + tries + " försök kvar!");
-                }
+                    if (counter == 0 && emptyCheck(text) == true) {
+                        tries--;
+                        triesLeft.setText(" Du har " + tries + " försök kvar!");
+                    }
 
-                addWord(text, wordsTried);
+                    addWord(text, wordsTried);
+
+                }
+            } catch (Exception e) {
+                System.out.println("No items yet");
+            }
+
+            String name = "";
+            for (int i = 0; i < uWord.size(); i++) {
+
+                name = name + uWord.get(i);
+
+                result = name;
+                word.setText(name);
+                System.out.println(result);
+
 
             }
-        } catch (Exception e) {
-            System.out.println("No items yet");
-        }
-
-        String name = "";
-        for (int i = 0; i < uWord.size(); i++) {
-
-            name = name + uWord.get(i);
-
-            result = name;
-            word.setText(name);
-            System.out.println(result);
 
 
         }
-
-
-    }}
+    }
 
 }
