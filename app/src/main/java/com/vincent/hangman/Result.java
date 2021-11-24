@@ -20,15 +20,15 @@ public class Result extends AppCompatActivity {
         setContentView(R.layout.activity_result);
         aB();
 
-        TextView result =(TextView) findViewById(R.id.results);
+        TextView result = (TextView) findViewById(R.id.results);
 
-        TextView finalword =(TextView) findViewById(R.id.theWord);
-        TextView triesLeft =(TextView) findViewById(R.id.trieskvar);
-        TextView bkToMenuBtn =(TextView) findViewById(R.id.bkToMain);
+        TextView finalword = (TextView) findViewById(R.id.theWord);
+        TextView triesLeft = (TextView) findViewById(R.id.trieskvar);
+        TextView bkToMenuBtn = (TextView) findViewById(R.id.bkToMain);
 
 
-        finalword.setText("Ordet var: "+getIntent().getStringExtra("word"));
-        triesLeft.setText("Antal försök kvar: "+Game.tries);
+        finalword.setText("Ordet var: " + getIntent().getStringExtra("word"));
+        triesLeft.setText("Antal försök kvar: " + Game.tries);
         realResult(result);
 
         bkToMenuBtn.setOnClickListener(new View.OnClickListener() {
@@ -36,22 +36,31 @@ public class Result extends AppCompatActivity {
             public void onClick(View v) {
                 Game.uWord.clear();
                 Game.wGuessed.clear();
-                Game.tries=9;
-                Game.result="";
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                Game.tries = 9;
+                Game.result = "";
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
 
 
     }
 
-    public void realResult(TextView result){
+    public void realResult(TextView result) {
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+        if (getIntent().getStringExtra("WON/Loss").equals("won")) {
+            result.setText("Grattis! du vann!");
+            actionBar.setTitle("Gött mos");
 
-        if(getIntent().getStringExtra("WON/Loss").equals("won")){result.setText("Grattis! du vann!");}
-        if(getIntent().getStringExtra("WON/Loss").equals("loss")){result.setText("Du förlorade!, GL next!");}
+        }
+        if (getIntent().getStringExtra("WON/Loss").equals("loss")) {
+            result.setText("Tyvärr, du förlorade!");
+            actionBar.setTitle("Bara på det igen =) ");
+        }
 
 
     }
+
     public void aB() {// Define ActionBar object
         ActionBar actionBar;
         actionBar = getSupportActionBar();
@@ -94,8 +103,6 @@ public class Result extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
 
     }
-
-
 
 
 }

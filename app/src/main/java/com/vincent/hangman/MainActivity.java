@@ -25,16 +25,14 @@ public class MainActivity extends AppCompatActivity {
 
 
         TextView aboutBtn = (TextView) findViewById(R.id.About);
-        TextView playBtn = (TextView)findViewById(R.id.Play);
-
-
+        TextView playBtn = (TextView) findViewById(R.id.Play);
 
 
         aboutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(MainActivity.this,About.class);
+                intent.setClass(MainActivity.this, About.class);
                 startActivity(intent);
             }
         });
@@ -43,27 +41,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(MainActivity.this,Game.class);
+                intent.setClass(MainActivity.this, Game.class);
                 startActivity(intent);
             }
         });
 
 
-
     }
+
     public void aB() {// Define ActionBar object
-    ActionBar actionBar;
-    actionBar = getSupportActionBar();
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+        actionBar.setTitle("");
 
-    // Define ColorDrawable object and parse color
-    // using parseColor method
-    // with color hash code as its parameter
-    ColorDrawable colorDrawable
-            = new ColorDrawable(Color.parseColor("#009688"));
+        // Define ColorDrawable object and parse color
+        // using parseColor method
+        // with color hash code as its parameter
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor("#009688"));
 
-    // Set BackgroundDrawable
-    actionBar.setBackgroundDrawable(colorDrawable);
-}
+        // Set BackgroundDrawable
+        actionBar.setBackgroundDrawable(colorDrawable);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

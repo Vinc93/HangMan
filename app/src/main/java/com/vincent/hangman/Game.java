@@ -29,10 +29,10 @@ public class Game extends AppCompatActivity {
     static ArrayList<String> list = new ArrayList<String>();
     static ArrayList<String> wGuessed = new ArrayList<String>();
     static ArrayList<String> uWord = new ArrayList<String>();
-    static ArrayList<String>winners = new ArrayList<String>();
+    static ArrayList<String> winners = new ArrayList<String>();
     static int tries = 9;
     static int counter = 0;
-    static String result="";
+    static String result = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,66 +53,15 @@ public class Game extends AppCompatActivity {
         TextView wordsTried = (TextView) findViewById(R.id.wordsGuessed);
         TextView word = (TextView) findViewById(R.id.hiddenWord);
         TextView triesLeft = (TextView) findViewById(R.id.guessLeft);
-        Init(randomInt, word, text, triesLeft, img);
+        Init(randomInt, word, triesLeft, img);
 
         // checkRandom(randomInt, text,word);
 
         guess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                GameCheck(text, randomInt, wordsTried, triesLeft, word);
 
-            emptyCheck(text);
-                try {
-                    if (checkWord(text) == false) {
-                        System.out.println("error");
-                    } else {
-                        for (int i = 0; i < uWord.size(); i++) {
-                            System.out.println(uWord.get(i));
-                            char ez = list.get(randomInt).toString().toUpperCase().charAt(i);
-                            try {
-                                char pls = text.getText().toString().toUpperCase().charAt(0);
-
-
-                                if (pls == ez) {
-                                    System.out.println("YESPLS");
-
-                                    uWord.set(i, text.getText().toString().toUpperCase());
-                                    counter++;
-                                    System.out.println(counter);
-                                } else if (pls != ez) {
-                                    System.out.println("fail!");
-
-                                }
-
-
-                            } catch (Exception e) {
-                                System.out.println("Dont leave me blanked!");
-                            }
-                        }
-
-                        if (counter == 0 && emptyCheck(text) == true) {
-                            tries--;
-                            triesLeft.setText(" Du har " + tries + " försök kvar!");
-                        }
-
-                        addWord(text, wordsTried);
-
-                    }
-                } catch (Exception e) {
-                    System.out.println("No items yet");
-                }
-
-                String name = "";
-                for (int i = 0; i < uWord.size(); i++) {
-
-                    name = name + uWord.get(i);
-
-                    result=name;
-                    word.setText(name);
-                    System.out.println(result);
-
-
-                }
                 //uWord.set(1,"b ");
                 loser(randomInt);
                 winner(randomInt);
@@ -132,7 +81,7 @@ public class Game extends AppCompatActivity {
     public void aB() {// Define ActionBar object
         ActionBar actionBar;
         actionBar = getSupportActionBar();
-
+        actionBar.setTitle("Lycka till! =) ");
         // Define ColorDrawable object and parse color
         // using parseColor method
         // with color hash code as its parameter
@@ -167,9 +116,9 @@ public class Game extends AppCompatActivity {
 
     }
 
-    public static void reset(){
+    public static void reset() {
 
-        Game.result="";
+        Game.result = "";
         Game.tries = 9;
         Game.uWord.clear();
         Game.wGuessed.clear();
@@ -177,7 +126,7 @@ public class Game extends AppCompatActivity {
 
     }
 
-    public void Init(int randomInt, TextView word, EditText text, TextView triesLeft, ImageView img) {
+    public void Init(int randomInt, TextView word, TextView triesLeft, ImageView img) {
 
 
         triesLeft.setText(" Du har " + tries + " försök kvar!");
@@ -219,9 +168,11 @@ public class Game extends AppCompatActivity {
 
         for (int i = 0; i < wGuessed.size(); i++) {
 
-            count = count + "/" + wGuessed.get(i);
+            if (emptyCheck(text) == true) {
+                count = count + "/" + wGuessed.get(i);
 
-            wordsTried.setText("Använda ord: " + count);
+                wordsTried.setText("Använda ord: " + count);
+            }
         }
 
 
@@ -232,7 +183,7 @@ public class Game extends AppCompatActivity {
 
         for (int i = 0; i < wGuessed.size(); i++) {
             if (text.getText().toString().toLowerCase().equals(wGuessed.get(i).toLowerCase())) {
-                Toast.makeText(Game.this,"Du har redan använt detta ord!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(Game.this, "Du har redan använt detta ord!", Toast.LENGTH_SHORT).show();
                 return false;
             }
             if (text.getText().toString().toUpperCase().equals(wGuessed.get(i).toUpperCase())) {
@@ -285,6 +236,16 @@ public class Game extends AppCompatActivity {
         } else return true;
     }
 
+    public boolean sizeTextCheck(EditText text){
+
+        if(text.getText().toString().length()>1){
+            Toast.makeText(Game.this, "Inte mer än ett ord", Toast.LENGTH_SHORT).show();
+            return false;
+        }else return true;
+
+    }
+
+
 
     public void triesChange(ImageView img) {
         if (tries == 8) {
@@ -321,16 +282,15 @@ public class Game extends AppCompatActivity {
     public void winner(int randomInt) {
         System.out.println(result);
         System.out.println(list.get(randomInt));
-        if(list.get(randomInt).toUpperCase().equals(result)){
+        if (list.get(randomInt).toUpperCase().equals(result)) {
             Intent intent = new Intent();
-            intent.setClass(this,Result.class);
-            intent.putExtra("word",list.get(randomInt));
-            //intent.putExtra("triesLeft",tries);
-            intent.putExtra("WON/Loss","won");
+            intent.setClass(this, Result.class);
+            intent.putExtra("word", list.get(randomInt));
+            intent.putExtra("WON/Loss", "won");
 
             startActivity(intent);
             System.out.println("U won!");
-            Toast.makeText(Game.this,"U did it", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Game.this, "U did it", Toast.LENGTH_SHORT).show();
 
         }
 
@@ -339,20 +299,78 @@ public class Game extends AppCompatActivity {
 
     public void loser(int randomInt) {
 
-        if(tries==0){
+        if (tries == 0) {
             Intent intent = new Intent();
-            intent.setClass(this,Result.class);
-            intent.putExtra("word",list.get(randomInt));
-            intent.putExtra("triesLeft",tries);
-            intent.putExtra("WON/Loss","loss");
+            intent.setClass(this, Result.class);
+            intent.putExtra("word", list.get(randomInt));
+            intent.putExtra("triesLeft", tries);
+            intent.putExtra("WON/Loss", "loss");
 
             startActivity(intent);
-            Toast.makeText(Game.this,"U lost! =(",Toast.LENGTH_SHORT).show();
+            Toast.makeText(Game.this, "U lost! =(", Toast.LENGTH_SHORT).show();
             System.out.println("Loser :(");
             //System.exit(1);
 
         }
 
     }
+
+    public void GameCheck(EditText text, int randomInt, TextView wordsTried, TextView triesLeft, TextView word) {
+        if(sizeTextCheck(text)==true){
+        emptyCheck(text);
+        try {
+            if (checkWord(text) == false) {
+                System.out.println("error");
+            } else {
+                for (int i = 0; i < uWord.size(); i++) {
+                    System.out.println(uWord.get(i));
+                    char ez = list.get(randomInt).toString().toUpperCase().charAt(i);
+                    try {
+                        char pls = text.getText().toString().toUpperCase().charAt(0);
+
+
+                        if (pls == ez) {
+                            System.out.println("YESPLS");
+
+                            uWord.set(i, text.getText().toString().toUpperCase());
+                            counter++;
+                            System.out.println(counter);
+                        } else if (pls != ez) {
+                            System.out.println("fail!");
+
+                        }
+
+
+                    } catch (Exception e) {
+                        System.out.println("Dont leave me blanked!");
+                    }
+                }
+
+                if (counter == 0 && emptyCheck(text) == true) {
+                    tries--;
+                    triesLeft.setText(" Du har " + tries + " försök kvar!");
+                }
+
+                addWord(text, wordsTried);
+
+            }
+        } catch (Exception e) {
+            System.out.println("No items yet");
+        }
+
+        String name = "";
+        for (int i = 0; i < uWord.size(); i++) {
+
+            name = name + uWord.get(i);
+
+            result = name;
+            word.setText(name);
+            System.out.println(result);
+
+
+        }
+
+
+    }}
 
 }

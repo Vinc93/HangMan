@@ -63,7 +63,7 @@
         android:ems="10"
         android:hint="Gissa på =)"
         android:inputType="textPersonName"
-        android:maxLength="1"
+
         app:layout_constraintEnd_toEndOf="@+id/wordsGuessed"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/wordsGuessed"
@@ -73,6 +73,7 @@
         android:id="@+id/guess"
         android:layout_width="124dp"
         android:layout_height="29dp"
+        android:background="#009688"
         android:gravity="center"
         android:text="Gissa!"
         app:layout_constraintBottom_toBottomOf="parent"

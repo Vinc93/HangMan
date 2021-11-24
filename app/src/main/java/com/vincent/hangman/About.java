@@ -21,7 +21,7 @@ public class About extends AppCompatActivity {
     } public void aB() {// Define ActionBar object
         ActionBar actionBar;
         actionBar = getSupportActionBar();
-
+        actionBar.setTitle("Där ser man xD");
         // Define ColorDrawable object and parse color
         // using parseColor method
         // with color hash code as its parameter
