@@ -25,11 +25,11 @@ import java.util.Random;
 public class Game extends AppCompatActivity {
 
 
-    private static final Random random = new Random();
-    private static ArrayList<String> list = new ArrayList<String>();
-    private static ArrayList<String> wGuessed = new ArrayList<String>();
-    private static ArrayList<String> uWord = new ArrayList<String>();
-    private static ArrayList<String>winners = new ArrayList<String>();
+    static final Random random = new Random();
+    static ArrayList<String> list = new ArrayList<String>();
+    static ArrayList<String> wGuessed = new ArrayList<String>();
+    static ArrayList<String> uWord = new ArrayList<String>();
+    static ArrayList<String>winners = new ArrayList<String>();
     static int tries = 9;
     static int counter = 0;
     static String result="";
@@ -61,7 +61,7 @@ public class Game extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
+            emptyCheck(text);
                 try {
                     if (checkWord(text) == false) {
                         System.out.println("error");
@@ -114,7 +114,7 @@ public class Game extends AppCompatActivity {
 
                 }
                 //uWord.set(1,"b ");
-
+                loser(randomInt);
                 winner(randomInt);
                 triesChange(img);
                 System.out.println(counter);
@@ -153,23 +153,27 @@ public class Game extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.MainMenu) {
-            result="";
-            tries = 9;
-            uWord.clear();
-            wGuessed.clear();
+            reset();
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
             return true;
         }
         if (id == R.id.Info) {
-            result="";
-            tries = 9;
-            uWord.clear();
-            wGuessed.clear();
+            reset();
             startActivity(new Intent(getApplicationContext(), About.class));
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+
+    }
+
+    public static void reset(){
+
+        Game.result="";
+        Game.tries = 9;
+        Game.uWord.clear();
+        Game.wGuessed.clear();
+
 
     }
 
@@ -228,6 +232,7 @@ public class Game extends AppCompatActivity {
 
         for (int i = 0; i < wGuessed.size(); i++) {
             if (text.getText().toString().toLowerCase().equals(wGuessed.get(i).toLowerCase())) {
+                Toast.makeText(Game.this,"Du har redan använt detta ord!",Toast.LENGTH_SHORT).show();
                 return false;
             }
             if (text.getText().toString().toUpperCase().equals(wGuessed.get(i).toUpperCase())) {
@@ -243,7 +248,7 @@ public class Game extends AppCompatActivity {
     }
 
 
-    public boolean checkWUsed(EditText text) {
+    /*public boolean checkWUsed(EditText text) {
         try {
 
 
@@ -270,7 +275,7 @@ public class Game extends AppCompatActivity {
         return true;
 
 
-    }
+    }*/
 
     public boolean emptyCheck(EditText text) {
         if (TextUtils.isEmpty(text.getText().toString())
@@ -317,7 +322,13 @@ public class Game extends AppCompatActivity {
         System.out.println(result);
         System.out.println(list.get(randomInt));
         if(list.get(randomInt).toUpperCase().equals(result)){
+            Intent intent = new Intent();
+            intent.setClass(this,Result.class);
+            intent.putExtra("word",list.get(randomInt));
+            //intent.putExtra("triesLeft",tries);
+            intent.putExtra("WON/Loss","won");
 
+            startActivity(intent);
             System.out.println("U won!");
             Toast.makeText(Game.this,"U did it", Toast.LENGTH_SHORT).show();
 
@@ -326,8 +337,22 @@ public class Game extends AppCompatActivity {
 
     }
 
-    public void loser() {
-    }
+    public void loser(int randomInt) {
 
+        if(tries==0){
+            Intent intent = new Intent();
+            intent.setClass(this,Result.class);
+            intent.putExtra("word",list.get(randomInt));
+            intent.putExtra("triesLeft",tries);
+            intent.putExtra("WON/Loss","loss");
+
+            startActivity(intent);
+            Toast.makeText(Game.this,"U lost! =(",Toast.LENGTH_SHORT).show();
+            System.out.println("Loser :(");
+            //System.exit(1);
+
+        }
+
+    }
 
 }

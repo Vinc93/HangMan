@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/PlayMain"
+        android:orderInCategory="1"
+        android:title="Play Again!"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_play"/>
+
+    <item
+
+        android:id="@+id/InfosMain"
+        android:orderInCategory="100"
+        android:title="Huvudmeny"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_info"
+        />
+</menu>
