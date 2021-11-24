@@ -45,6 +45,32 @@ public class Game extends AppCompatActivity {
         list.add("Dator");
         list.add("Skrivbord");
         list.add("Restaurang");
+        list.add("Blizzard");
+        list.add("Mystify");
+        list.add("Nightclub");
+        list.add("Glyph");
+        list.add("Unknown");
+        list.add("Unworthy");
+        list.add("Yxa");
+        list.add("Magi");
+        list.add("Öl");
+        list.add("Tåg");
+        list.add("Såg");
+        list.add("Låg");
+        list.add("Vraka");
+        list.add("Etylendiamintetraättiksyradinatriumsalt");
+        list.add("Liverpool");
+        list.add("Barcelona");
+        list.add("United");
+        list.add("Pc");
+        list.add("Applikation");
+        list.add("Pizza");
+        list.add("Kebab");
+        list.add("Mjöl");
+        list.add("Gymma");
+
+
+
 
         int randomInt = random.nextInt(list.size());
         ImageView img = (ImageView) findViewById(R.id.mainPic);

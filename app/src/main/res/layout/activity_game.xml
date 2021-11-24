@@ -59,11 +59,10 @@
         android:layout_width="264dp"
         android:layout_height="48dp"
         android:layout_marginTop="28dp"
-        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        android:digits="abcdefghijklmnopqrstuvwxyzåäöABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ"
         android:ems="10"
         android:hint="Gissa på =)"
         android:inputType="textPersonName"
-
         app:layout_constraintEnd_toEndOf="@+id/wordsGuessed"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/wordsGuessed"
