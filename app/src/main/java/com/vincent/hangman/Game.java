@@ -26,10 +26,11 @@ public class Game extends AppCompatActivity {
 
 
     static final Random random = new Random();
+
     static ArrayList<String> list = new ArrayList<String>();
     static ArrayList<String> wGuessed = new ArrayList<String>();
     static ArrayList<String> uWord = new ArrayList<String>();
-    static ArrayList<String> winners = new ArrayList<String>();
+
     static int tries = 9;
     static int counter = 0;
     static String result = "";
@@ -58,7 +59,6 @@ public class Game extends AppCompatActivity {
         list.add("Såg");
         list.add("Låg");
         list.add("Vraka");
-        list.add("Etylendiamintetraättiksyradinatriumsalt");
         list.add("Liverpool");
         list.add("Barcelona");
         list.add("United");
@@ -183,44 +183,7 @@ public class Game extends AppCompatActivity {
 
     }
 
-    public void addWord(EditText text, TextView wordsTried) {
 
-        String count = "";
-        String c = text.getText().toString().toUpperCase();
-
-        wGuessed.add(c);
-
-        for (int i = 0; i < wGuessed.size(); i++) {
-
-
-            count = count + " - " + wGuessed.get(i);
-
-            wordsTried.setText("Använda ord: " + count);
-
-        }
-
-
-    }
-
-    public boolean checkWord(EditText text) {
-
-
-        for (int i = 0; i < wGuessed.size(); i++) {
-            if (text.getText().toString().toLowerCase().equals(wGuessed.get(i).toLowerCase())) {
-                Toast.makeText(Game.this, "Du har redan använt detta ord!", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-            if (text.getText().toString().toUpperCase().equals(wGuessed.get(i).toUpperCase())) {
-
-                System.out.println("Error");
-
-                return false;
-
-            } else System.out.println("No Errror");
-        }
-
-        return true;
-    }
 
 
     /*public boolean checkWUsed(EditText text) {
@@ -337,10 +300,48 @@ public class Game extends AppCompatActivity {
         }
 
     }
+    public void addWord(EditText text, TextView wordsTried) {
+
+        String count = "";
+        String c = text.getText().toString().toUpperCase();
+
+        wGuessed.add(c);
+
+        for (int i = 0; i < wGuessed.size(); i++) {
+
+
+            count = count + " - " + wGuessed.get(i);
+
+            wordsTried.setText("Använda bokstäver: " + count);
+
+        }
+
+
+    }
+
+    public boolean checkWord(EditText text) {
+
+
+        for (int i = 0; i < wGuessed.size(); i++) {
+            if (text.getText().toString().toLowerCase().equals(wGuessed.get(i).toLowerCase())) {
+                Toast.makeText(Game.this, "Du har redan använt denna bokstav!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+            if (text.getText().toString().toUpperCase().equals(wGuessed.get(i).toUpperCase())) {
+
+                System.out.println("Error");
+
+                return false;
+
+            } else System.out.println("No Errror");
+        }
+
+        return true;
+    }
 
     public void GameCheck(EditText text, int randomInt, TextView wordsTried, TextView triesLeft, TextView word) {
         if (sizeTextCheck(text) == true) {
-            emptyCheck(text);
+           if(emptyCheck(text)==true){
             try {
                 if (checkWord(text) == false) {
                     System.out.println("error");
@@ -394,7 +395,7 @@ public class Game extends AppCompatActivity {
             }
 
 
-        }
+        }}
     }
 
 }

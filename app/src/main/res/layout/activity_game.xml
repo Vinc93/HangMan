@@ -15,38 +15,38 @@
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.078" />
+        app:layout_constraintVertical_bias="0.032" />
 
     <TextView
         android:id="@+id/guessLeft"
         android:layout_width="264dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="32dp"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="@+id/hiddenWord"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/hiddenWord"
         app:layout_constraintTop_toBottomOf="@+id/hiddenWord" />
 
     <TextView
         android:id="@+id/hiddenWord"
         android:layout_width="264dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/mainPic"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/mainPic"
         app:layout_constraintTop_toBottomOf="@+id/mainPic" />
 
     <TextView
         android:id="@+id/wordsGuessed"
         android:layout_width="264dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="12dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="28dp"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="@+id/guessLeft"
@@ -58,28 +58,28 @@
 
         android:id="@+id/guessWord"
         android:layout_width="264dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="16dp"
         android:digits="abcdefghijklmnopqrstuvwxyzåäöABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ"
         android:ems="10"
         android:hint="Gissa på =)"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/wordsGuessed"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/wordsGuessed"
         app:layout_constraintTop_toBottomOf="@+id/wordsGuessed" />
 
     <TextView
         android:id="@+id/guess"
-        android:layout_width="124dp"
+        android:layout_width="152dp"
         android:layout_height="29dp"
         android:background="#009688"
         android:gravity="center"
         android:text="Gissa!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/guessWord"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="@+id/guessWord"
         app:layout_constraintTop_toBottomOf="@+id/guessWord"
-        app:layout_constraintVertical_bias="0.063" />
+        app:layout_constraintVertical_bias="0.198" />
 </androidx.constraintlayout.widget.ConstraintLayout>

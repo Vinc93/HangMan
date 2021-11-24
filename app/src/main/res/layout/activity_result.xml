@@ -20,8 +20,8 @@
 
     <TextView
         android:id="@+id/theWord"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="226dp"
+        android:layout_height="43dp"
         android:layout_marginTop="100dp"
         android:gravity="center"
         android:text="TextView"
@@ -31,27 +31,28 @@
 
     <TextView
         android:id="@+id/trieskvar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_width="220dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="68dp"
         android:gravity="center|center_horizontal"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="@+id/theWord"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="@+id/theWord"
         app:layout_constraintTop_toBottomOf="@+id/theWord" />
 
     <TextView
         android:id="@+id/bkToMain"
-        android:layout_width="211dp"
-        android:layout_height="48dp"
+        android:layout_width="230dp"
+        android:layout_height="60dp"
         android:background="#009688"
         android:gravity="center"
         android:text="Tillbaka till huvudmenyn"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/trieskvar"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="@+id/trieskvar"
         app:layout_constraintTop_toBottomOf="@+id/trieskvar"
-        app:layout_constraintVertical_bias="0.289" />
+        app:layout_constraintVertical_bias="0.295" />
 </androidx.constraintlayout.widget.ConstraintLayout>
