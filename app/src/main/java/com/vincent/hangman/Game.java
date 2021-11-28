@@ -226,7 +226,7 @@ public class Game extends AppCompatActivity {
     public boolean sizeTextCheck(EditText text) {
 
         if (text.getText().toString().length() > 1) {
-            Toast.makeText(Game.this, "Inte mer än ett ord", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Game.this, "Inte mer än en bokstav", Toast.LENGTH_SHORT).show();
             return false;
         } else return true;
 
